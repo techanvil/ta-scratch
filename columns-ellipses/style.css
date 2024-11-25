@@ -1,0 +1,57 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 20px;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  width: 400px;
+  border: 2px solid red;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10px;
+  /* gap: 20px; optional spacing between elements */
+
+  /* Initialize the counter */
+  counter-reset: row-counter;
+}
+
+.left {
+  border: 2px solid blue;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+
+  /* Increment counter for each row */
+  counter-increment: row-counter;
+  /* Add counter before the content */
+  position: relative;
+  padding-left: 2em; /* Make space for the number */
+
+  > * {
+    /* flex: 1; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.left::before {
+  /* Display the counter */
+  content: counter(row-counter);
+  position: absolute;
+  left: 0.5em;
+}
+
+.right {
+  border: 2px solid green;
+  justify-self: end;
+}
