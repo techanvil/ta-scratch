@@ -46,7 +46,7 @@
 
 .left::before {
   /* Display the counter */
-  content: counter(row-counter);
+  content: counter(row-counter) '.';
   position: absolute;
   left: 0.5em;
 }
