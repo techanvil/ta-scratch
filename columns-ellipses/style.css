@@ -16,6 +16,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr auto;
+  /* grid-template-columns: minmax(0, 1fr) auto; */
   column-gap: 10px;
   /* gap: 20px; optional spacing between elements */
 
@@ -25,28 +26,17 @@
 
 .left {
   border: 2px solid blue;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  /* text-overflow: ellipsis; */
 
   /* Increment counter for each row */
   counter-increment: row-counter;
   /* Add counter before the content */
   position: relative;
   padding-left: 2em; /* Make space for the number */
-
-  > * {
-    /* flex: 1; */
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
 
 .left::before {
   /* Display the counter */
-  content: counter(row-counter) '.';
+  content: counter(row-counter) ".";
   position: absolute;
   left: 0.5em;
 }
@@ -54,4 +44,18 @@
 .right {
   border: 2px solid green;
   justify-self: end;
+}
+
+/* Ellipses */
+
+.left--ellipses {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  > * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
